@@ -29,6 +29,7 @@ const App: React.FC = () => {
                     <li>add links to the- uh links</li>
                     <li>add a better footer - this was suggested by copilot github BTW LOL</li>
                     <li>make it so its compatible with other screen sizes</li>
+                    <li>re-style everything with tailwind</li>
                 </ul>
             </div>
             <footer style={{position: 'absolute', bottom:0, left: 0}}><Footer/></footer>

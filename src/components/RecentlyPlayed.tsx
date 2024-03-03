@@ -42,9 +42,9 @@ const RecentlyPlayed: React.FC = () => {
         <div>
             <h1>What I've been listening to:</h1>
             {recentlyPlayed.length > 0 ? (
-                <ul style={{listStyleType: "none"}}>
+                <ul>
                     {recentlyPlayed.map((track, index) => (
-                        <li style={{marginTop:5, marginBottom:5}} key={index}>
+                        <li key={index}>
                             <p> {track.artist} - {track.track} // {index === 0 ? 'Now Scrobbling' : `Played ${formatDistanceToNow(new Date(track.timestamp))} ago`}</p>
                         </li>
                     ))}

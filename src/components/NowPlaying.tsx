@@ -45,15 +45,12 @@ const NowPlaying: React.FC = () => {
         <div>
 
             {nowPlaying ? (
-                <div style={{textAlign: "right"}}>
+                <div>
                     <p>Total Scrobbles: {totalScrobbles}</p>
-                    <div>
-                        <h2> Now Playing<span
-                        style={{animation: 'bounce 1s infinite alternate'}}>...</span></h2>
-                        <a href={nowPlaying.url}><img src={nowPlaying.image} alt="Album cover"/></a>
-                    </div>
-                    <p style={{fontSize: 25}}>{nowPlaying.name}</p>
-                    <p style={{color: "lightgray"}}>{nowPlaying.artist}</p>
+                    <h2> Now Playing</h2>
+                    <a href={nowPlaying.url}><img src={nowPlaying.image} alt="Album cover"/></a>
+                    <p>{nowPlaying.name}</p>
+                    <p>{nowPlaying.artist}</p>
                 </div>
             ) : (
                 <p>Loading... (or nothing is playing.)</p>

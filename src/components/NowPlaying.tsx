@@ -50,7 +50,7 @@ const NowPlaying: React.FC = () => {
         <div className="flex flex-col items-end">
             <div className="text-right">
                 <p>Total Scrobbles: {totalScrobbles}</p>
-                <h2 className="animate-pulse text-xl">Now Playing</h2>
+                <h2 className="animate-pulse text-xl">zx is now scrobbling...</h2>
             </div>
             {nowPlaying ? (
                 <>
@@ -65,7 +65,7 @@ const NowPlaying: React.FC = () => {
                     </div>
                 </>
             ) : (
-                <p className="text-xl">Nothing is playing.</p>
+                <p className="text-xl">nothing.</p>
             )}
         </div>
     );

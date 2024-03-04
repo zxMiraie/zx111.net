@@ -1,24 +1,26 @@
 import React from 'react';
 import './App.css';
-import NowPlaying from "./components/NowPlaying.tsx";
-import RecentlyPlayed from "./components/RecentlyPlayed.tsx";
-import Footer from "./components/Footer.tsx";
-import Links from "./components/Links.tsx";
-
+import NowPlaying from "./components/NowPlaying";
+import RecentlyPlayed from "./components/RecentlyPlayed";
+import Footer from "./components/Footer";
+import Links from "./components/Links";
 
 const App: React.FC = () => {
     return (
-        <div style={{ display: 'grid', placeItems: 'center', height: '100vh' }}>
-            <div style={{position: 'absolute', bottom: 5, right: 15, padding: 10}}>
-                <NowPlaying/>
-            </div>
-            <div style={{position: "absolute", top:0, left:10,}}>
+        <div className="relative min-h-screen flex flex-col justify-between">
+            <header className="absolute top-0 left-0 p-4">
                 <RecentlyPlayed/>
-            </div>
-            <div>
+            </header>
+            <main className="flex-grow flex items-center justify-center p-4">
                 <Links/>
-            </div>
-            <div style={{position: 'absolute', top: 20, right: 10, textAlign: "right"}}>
+            </main>
+            <footer className="w-full">
+                <Footer/>
+            </footer>
+            <aside className="absolute bottom-0 right-0 p-4">
+                <NowPlaying/>
+            </aside>
+            <aside className="absolute top-0 right-0 p-4 text-right">
                 <p>I'm zx111</p>
                 <p>I'm very lazy to finish this site right now...</p>
                 <br></br>
@@ -29,10 +31,9 @@ const App: React.FC = () => {
                     <li>add links to the- uh links</li>
                     <li>add a better footer - this was suggested by copilot github BTW LOL</li>
                     <li>make it so its compatible with other screen sizes</li>
-                    <li>re-style everything with tailwind</li>
+                    <li>re-style everything with tailwind - partially done</li>
                 </ul>
-            </div>
-            <footer style={{position: 'absolute', bottom:0, left: 0}}><Footer/></footer>
+            </aside>
         </div>
     );
 };

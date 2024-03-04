@@ -14,9 +14,6 @@ const App: React.FC = () => {
             <main className="flex-grow flex items-center justify-center p-4">
                 <Links/>
             </main>
-            <footer className="w-full p-4 text-center sm:text-left">
-                <Footer/>
-            </footer>
             <aside className="p-4 sm:absolute sm:bottom-0 sm:right-0">
                 <NowPlaying/>
             </aside>
@@ -34,6 +31,9 @@ const App: React.FC = () => {
                     <li>re-style everything with tailwind - partially done</li>
                 </ul>
             </aside>
+            <footer className="w-full p-4 text-center sm:text-left">
+                <Footer/>
+            </footer>
         </div>
     );
 };

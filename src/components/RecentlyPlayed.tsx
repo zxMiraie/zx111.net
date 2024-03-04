@@ -44,8 +44,13 @@ const RecentlyPlayed: React.FC = () => {
             {recentlyPlayed.length > 0 ? (
                 <ul>
                     {recentlyPlayed.map((track, index) => (
-                        <li key={index}>
-                            <p> {track.artist} - {track.track} // {index === 0 ? 'Now Scrobbling' : `Played ${formatDistanceToNow(new Date(track.timestamp))} ago`}</p>
+                        <li key={index} className="flex justify-start text-sm items-center">
+                            <span className="truncate" style={{ maxWidth: '50%' }} title={`${track.artist} - ${track.track}`}>
+                                {track.artist} - {track.track}
+                            </span>
+                            <span className="flex-shrink-0 ml-2 whitespace-nowrap">
+                                // {index === 0 ? 'Latest Scrobble' : `Played ${formatDistanceToNow(new Date(track.timestamp))} ago`}
+                            </span>
                         </li>
                     ))}
                 </ul>

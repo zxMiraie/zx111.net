@@ -8,24 +8,24 @@ import Links from "./components/Links";
 const App: React.FC = () => {
     return (
         <div className="relative min-h-screen flex flex-col justify-between">
-            <header className="absolute top-0 left-0 p-4">
+            <header className="p-4 sm:absolute sm:top-0 sm:left-0">
                 <RecentlyPlayed/>
             </header>
             <main className="flex-grow flex items-center justify-center p-4">
                 <Links/>
             </main>
-            <footer className="w-full">
+            <footer className="w-full p-4 text-center sm:text-left">
                 <Footer/>
             </footer>
-            <aside className="absolute bottom-0 right-0 p-4">
+            <aside className="p-4 sm:absolute sm:bottom-0 sm:right-0">
                 <NowPlaying/>
             </aside>
-            <aside className="absolute top-0 right-0 p-4 text-right">
+            <aside className="p-4 text-right sm:absolute sm:top-0 sm:right-0">
                 <p>I'm zx111</p>
                 <p>I'm very lazy to finish this site right now...</p>
                 <br></br>
                 <p>To-DO:</p>
-                <ul style={{listStyleType: "none"}}>
+                <ul className="list-none">
                     <li>probably to make it actually good.</li>
                     <li>Spotify has HQ images for covers- maybe I should get them from there</li>
                     <li>add links to the- uh links</li>

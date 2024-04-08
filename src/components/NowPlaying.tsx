@@ -15,7 +15,7 @@ const NowPlaying: React.FC = () => {
     useEffect(() => {
         const fetchNowPlaying = async () => {
             try {
-                const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zx111&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json&limit=1&nowplaying=true`);
+                const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zx111&api_key=${import.meta.env.VITE_LASTFM_API_KEY}&format=json&limit=1&nowplaying=true`);
                 const data = await response.json();
 
                 if (data.recenttracks.track[0]['@attr'] && data.recenttracks.track[0]['@attr'].nowplaying === 'true') {

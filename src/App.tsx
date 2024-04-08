@@ -25,8 +25,6 @@ const App: React.FC = () => {
                 <ul className="list-none">
                     <li>probably to make it actually good.</li>
                     <li>Spotify has HQ images for covers- maybe I should get them from there</li>
-                    <li>add links to the- uh links</li>
-                    <li>add a better footer - this was suggested by copilot github BTW LOL</li>
                     <li>make it so its compatible with other screen sizes</li>
                     <li>re-style everything with tailwind - partially done</li>
                 </ul>

@@ -14,7 +14,7 @@ const RecentlyPlayed: React.FC = () => {
         const fetchRecentlyPlayed = async () => {
             try {
                 const response = await fetch(
-                    `https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=zx111&api_key=${{secrets.REACT_APP_LASTFM_API_KEY}}&format=json&limit=10&page=1`
+                    `https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=zx111&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json&limit=10&page=1`
                 );
                 const data = await response.json();
                 const tracks = data.recenttracks.track.map((trackInfo: any) => ({

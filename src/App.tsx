@@ -4,6 +4,7 @@ import NowPlaying from "./components/NowPlaying";
 import RecentlyPlayed from "./components/RecentlyPlayed";
 import Footer from "./components/Footer";
 import Links from "./components/Links";
+import Clock from "./components/Clock.tsx";
 
 const App: React.FC = () => {
     return (
@@ -31,6 +32,7 @@ const App: React.FC = () => {
             </aside>
             <footer className="w-full p-4 text-center sm:text-left">
                 <Footer/>
+                <Clock/>
             </footer>
         </div>
     );

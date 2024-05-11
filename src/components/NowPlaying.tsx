@@ -32,7 +32,7 @@ const NowPlaying: React.FC = () => {
                     setNowPlaying(null); // No song is currently playing
                 }
 
-                const userResponse = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getInfo&user=zx111&api_key=626c5839d97433660dc9a667e3ff7d4a&format=json`);
+                const userResponse = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getInfo&user=zx111&api_key=${import.meta.env.VITE_LASTFM_API_KEY}&format=json`);
                 const userData = await userResponse.json();
                 const userScrobbles = parseInt(userData.user.playcount, 10);
                 setTotalScrobbles(userScrobbles);

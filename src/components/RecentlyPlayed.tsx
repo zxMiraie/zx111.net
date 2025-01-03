@@ -13,16 +13,18 @@ const RecentlyPlayed: React.FC = () => {
     useEffect(() => {
         const fetchRecentlyPlayed = async () => {
             try {
+                // Use your serverless function endpoint
                 const response = await fetch(
-                    `https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=zx111&api_key=${import.meta.env.VITE_LASTFM_API_KEY}&format=json&limit=10&page=1`
+                    `/api/lastfm?method=user.getrecenttracks&user=zx111&limit=10&page=1`
                 );
                 const data = await response.json();
+
                 const tracks = data.recenttracks.track.map((trackInfo: any) => ({
                     artist: trackInfo.artist['#text'],
                     track: trackInfo.name,
-                    timestamp: parseInt(trackInfo.date ? trackInfo.date.uts : '0', 10)* 1000
-
+                    timestamp: parseInt(trackInfo.date ? trackInfo.date.uts : '0', 10) * 1000
                 }));
+
                 setRecentlyPlayed(tracks);
             } catch (error) {
                 console.error('Error fetching recently played tracks:', error);
@@ -34,8 +36,6 @@ const RecentlyPlayed: React.FC = () => {
         // Refresh recently played every 10 seconds
         const interval = setInterval(fetchRecentlyPlayed, 10000);
         return () => clearInterval(interval);
-
-
     }, []);
 
     return (
@@ -45,12 +45,18 @@ const RecentlyPlayed: React.FC = () => {
                 <ul>
                     {recentlyPlayed.map((track, index) => (
                         <li key={index} className="flex justify-start text-sm items-center">
-                            <span className="truncate" style={{ maxWidth: '50%' }} title={`${track.artist} - ${track.track}`}>
-                                {track.artist} - {track.track}
-                            </span>
+              <span
+                  className="truncate"
+                  style={{ maxWidth: '50%' }}
+                  title={`${track.artist} - ${track.track}`}
+              >
+                {track.artist} - {track.track}
+              </span>
                             <span className="flex-shrink-0 ml-2 whitespace-nowrap">
-                                // {index === 0 ? 'Latest Scrobble' : `Played ${formatDistanceToNow(new Date(track.timestamp))} ago`}
-                            </span>
+                {/* Show time since the track was scrobbled */}
+                                {/* index === 0 ? 'Latest Scrobble' : `Played ${formatDistanceToNow(new Date(track.timestamp))} ago` */}
+                                {index === 0 ? 'Latest Scrobble' : `Played ${formatDistanceToNow(new Date(track.timestamp))} ago`}
+              </span>
                         </li>
                     ))}
                 </ul>

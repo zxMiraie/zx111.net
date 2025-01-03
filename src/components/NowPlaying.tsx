@@ -15,24 +15,30 @@ const NowPlaying: React.FC = () => {
     useEffect(() => {
         const fetchNowPlaying = async () => {
             try {
-                const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zx111&api_key=${import.meta.env.VITE_LASTFM_API_KEY}&format=json&limit=1&nowplaying=true`);
-                const data = await response.json();
+                // 1) Call the serverless function
+                const nowPlayingResponse = await fetch(
+                    `/api/lastfm?method=user.getrecenttracks&user=zx111&limit=1&nowplaying=true`
+                );
+                const nowPlayingData = await nowPlayingResponse.json();
 
-                if (data.recenttracks.track[0]['@attr'] && data.recenttracks.track[0]['@attr'].nowplaying === 'true') {
-                    const trackInfo = data.recenttracks.track[0];
-                    const track: Track = {
-                        name: trackInfo.name,
-                        artist: trackInfo.artist['#text'],
-                        image: trackInfo.image[3]['#text'],
-                        url: trackInfo.url,
+                const track = nowPlayingData.recenttracks?.track?.[0];
+                if (track?.['@attr']?.nowplaying === 'true') {
+                    setNowPlaying({
+                        name: track.name,
+                        artist: track.artist['#text'],
+                        image: track.image[3]['#text'],
+                        url: track.url,
                         nowPlaying: true
-                    };
-                    setNowPlaying(track);
+                    });
                 } else {
-                    setNowPlaying(null); // No song is currently playing
+                    // No song currently playing
+                    setNowPlaying(null);
                 }
 
-                const userResponse = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getInfo&user=zx111&api_key=${import.meta.env.VITE_LASTFM_API_KEY}&format=json`);
+                // 2) Fetch user info for total scrobbles
+                const userResponse = await fetch(
+                    `/api/lastfm?method=user.getInfo&user=zx111`
+                );
                 const userData = await userResponse.json();
                 const userScrobbles = parseInt(userData.user.playcount, 10);
                 setTotalScrobbles(userScrobbles);
@@ -42,6 +48,7 @@ const NowPlaying: React.FC = () => {
         };
 
         fetchNowPlaying();
+        // Refresh every 10 seconds
         const interval = setInterval(fetchNowPlaying, 10000);
         return () => clearInterval(interval);
     }, []);
@@ -56,7 +63,7 @@ const NowPlaying: React.FC = () => {
                 <>
                     <div className="mt-4">
                         <a href={nowPlaying.url}>
-                            <img src={nowPlaying.image} alt="Album cover" className="w-auto"/>
+                            <img src={nowPlaying.image} alt="Album cover" className="w-auto" />
                         </a>
                     </div>
                     <div className="text-right">

@@ -6,10 +6,12 @@ import Footer from "./components/Footer";
 import Links from "./components/Links";
 import Clock from "./components/Clock.tsx";
 import Discord from "./components/Discord.tsx";
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const App: React.FC = () => {
     return (
         <div className="relative min-h-screen flex flex-col justify-between">
+            <SpeedInsights/>
             <header className="p-4 sm:absolute sm:top-0 sm:left-0">
                 <RecentlyPlayed/>
             </header>

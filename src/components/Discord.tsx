@@ -44,7 +44,7 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
            try{
                const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
                const json = await response.json();
-               setData(json);
+               setData(json.data);
               } catch (error) {
                 console.error('Error fetching data:', error);
            }

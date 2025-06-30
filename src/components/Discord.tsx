@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
 
 interface DiscordProps {
     userId: string;
@@ -40,14 +40,15 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
     const [data, setData] = useState<LanyardData | null>(null);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`https://api.lanyard.rest/v1/users/${userId}`);
-                setData(response.data.data);
-            } catch (error) {
+       const fetchData = async () => {
+           try{
+               const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+               const json = await response.json();
+               setData(json);
+              } catch (error) {
                 console.error('Error fetching data:', error);
-            }
-        };
+           }
+       }
 
         fetchData();
     }, [userId]);
@@ -60,7 +61,7 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
     const avatarUrl = `https://api.lanyard.rest/${discord_user.id}.png`;
 
     // Define border color based on Discord status
-    let borderColorClass = '';
+    let borderColorClass = null;
     switch (discord_status) {
         case 'online':
             borderColorClass = 'border-green-500';

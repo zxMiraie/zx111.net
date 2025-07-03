@@ -1,57 +1,8 @@
-import React, { useEffect, useState } from 'react';
-
-interface Track {
-    name: string;
-    artist: string;
-    image: string;
-    url: string;
-    nowPlaying?: boolean;
-}
+import React from 'react';
+import {HookFM} from "../../api/hook.ts";
 
 const NowPlaying: React.FC = () => {
-    const [nowPlaying, setNowPlaying] = useState<Track | null>(null);
-    const [totalScrobbles, setTotalScrobbles] = useState<number | null>(null);
-
-    useEffect(() => {
-        const fetchNowPlaying = async () => {
-            try {
-                // 1) Call the serverless function
-                const nowPlayingResponse = await fetch(
-                    `/api/lastfm?method=user.getrecenttracks&user=zx111&limit=1&nowplaying=true`
-                );
-                const nowPlayingData = await nowPlayingResponse.json();
-
-                const track = nowPlayingData.recenttracks?.track?.[0];
-                if (track?.['@attr']?.nowplaying === 'true') {
-                    setNowPlaying({
-                        name: track.name,
-                        artist: track.artist['#text'],
-                        image: track.image[3]['#text'],
-                        url: track.url,
-                        nowPlaying: true
-                    });
-                } else {
-                    // No song currently playing
-                    setNowPlaying(null);
-                }
-
-                // 2) Fetch user info for total scrobbles
-                const userResponse = await fetch(
-                    `/api/lastfm?method=user.getInfo&user=zx111`
-                );
-                const userData = await userResponse.json();
-                const userScrobbles = parseInt(userData.user.playcount, 10);
-                setTotalScrobbles(userScrobbles);
-            } catch (error) {
-                console.error('Error fetching now playing track:', error);
-            }
-        };
-
-        fetchNowPlaying();
-        // Refresh every 10 seconds
-        const interval = setInterval(fetchNowPlaying, 10000);
-        return () => clearInterval(interval);
-    }, []);
+    const {nowPlaying, totalScrobbles} = HookFM('zx111', 10);
 
     return (
         <div className="flex flex-col items-end">

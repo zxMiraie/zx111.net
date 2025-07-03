@@ -98,6 +98,11 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
                             </div>
                         ))}
                     </div>
+                    <footer className="flex items-center justify-center text-sm">
+                        <p className="animate-pulse bg-gradient-to-r from-blue-400 via-teal-500 to-green-500 bg-clip-text text-transparent font-bold drop-shadow-[0_0_10px_rgba(56,189,248,0.8)] hover:drop-shadow-[0_0_20px_rgba(56,189,248,1)] transition-all duration-300 cursor-pointer">
+                            You can click this!
+                        </p>
+                    </footer>
                 </div>
                 <img src={avatarUrl} alt="User Avatar" className={`w-36 h-36 rounded-full border-4 ${borderColorClass}`}/>
             </div>

@@ -1,48 +1,22 @@
-import './App.css';
-import NowPlaying from "./components/NowPlaying";
-import RecentlyPlayed from "./components/RecentlyPlayed";
-import Footer from "./components/Footer";
-import Links from "./components/Links";
-import Clock from "./components/Clock";
-import Discord from "./components/Discord";
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from "@vercel/analytics/react";
-import {HookFM} from "./hooks/hook";
+import {Route, Routes, BrowserRouter} from "react-router-dom";
+import AboutMe from "./pages/AboutMe";
+import LandingPage from "./pages/LandingPage";
 import React from "react";
+import './App.css';
 
 const App: React.FC = () => {
-    const { nowPlaying, recentlyPlayed, totalScrobbles, isLoading, error } = HookFM('zx111', 10);
-
-
-    return (
-        <div className="relative min-h-screen flex flex-col justify-between">
-            <SpeedInsights/>
-            <Analytics/>
-            <header className="p-4 sm:absolute sm:top-0 sm:left-0">
-                <RecentlyPlayed
-                    tracks = {recentlyPlayed}
-                    isLoading = {isLoading}
-                    error = {error}
-                />
-            </header>
-            <main className="flex-grow flex items-center justify-center p-3">
-                <Links/>
-            </main>
-            <aside className="p-4 sm:absolute sm:bottom-0 sm:right-0">
-                <NowPlaying
-                    track={nowPlaying}
-                    scrobbles={totalScrobbles}
-                />
-            </aside>
-            <aside className="p-4 sm:absolute sm:top-4 sm:right-4">
-                <Discord userId="360803113864658944"/>
-            </aside>
-            <footer className="p-4 text-center sm:text-left">
-                <Footer/>
-                <Clock/>
-            </footer>
-        </div>
-    );
+    return(
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/about" element={<AboutMe />} />
+            </Routes>
+            <SpeedInsights />
+            <Analytics />
+        </BrowserRouter>
+    )
 };
 
 export default App;

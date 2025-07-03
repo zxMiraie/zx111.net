@@ -7,21 +7,32 @@ import Links from "./components/Links";
 import Clock from "./components/Clock.tsx";
 import Discord from "./components/Discord.tsx";
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import {HookFM} from "./hooks/hook";
 
 const App: React.FC = () => {
+    const { nowPlaying, recentlyPlayed, totalScrobbles, isLoading, error } = HookFM('zx111', 10);
+
+
     return (
         <div className="relative min-h-screen flex flex-col justify-between">
             <SpeedInsights/>
             <Analytics/>
             <header className="p-4 sm:absolute sm:top-0 sm:left-0">
-                <RecentlyPlayed/>
+                <RecentlyPlayed
+                    tracks = {recentlyPlayed}
+                    isLoading = {isLoading}
+                    error = {error}
+                />
             </header>
             <main className="flex-grow flex items-center justify-center p-3">
                 <Links/>
             </main>
             <aside className="p-4 sm:absolute sm:bottom-0 sm:right-0">
-                <NowPlaying/>
+                <NowPlaying
+                    track={nowPlaying}
+                    scrobbles={totalScrobbles}
+                />
             </aside>
             <aside className="p-4 sm:absolute sm:top-4 sm:right-4">
                 <Discord userId="360803113864658944"/>

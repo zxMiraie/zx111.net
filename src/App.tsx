@@ -1,14 +1,14 @@
-import React from 'react';
 import './App.css';
 import NowPlaying from "./components/NowPlaying";
 import RecentlyPlayed from "./components/RecentlyPlayed";
 import Footer from "./components/Footer";
 import Links from "./components/Links";
-import Clock from "./components/Clock.tsx";
-import Discord from "./components/Discord.tsx";
+import Clock from "./components/Clock";
+import Discord from "./components/Discord";
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from "@vercel/analytics/react";
 import {HookFM} from "./hooks/hook";
+import React from "react";
 
 const App: React.FC = () => {
     const { nowPlaying, recentlyPlayed, totalScrobbles, isLoading, error } = HookFM('zx111', 10);
@@ -37,7 +37,7 @@ const App: React.FC = () => {
             <aside className="p-4 sm:absolute sm:top-4 sm:right-4">
                 <Discord userId="360803113864658944"/>
             </aside>
-            <footer className="w-full p-4 text-center sm:text-left">
+            <footer className="p-4 text-center sm:text-left">
                 <Footer/>
                 <Clock/>
             </footer>

@@ -9,7 +9,6 @@ interface Props {
 }
 
 const RecentlyPlayed: React.FC<Props> = ({ tracks, isLoading, error }) => {
-    // --- FIX #3: Proper loading and error handling ---
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
 
@@ -18,7 +17,6 @@ const RecentlyPlayed: React.FC<Props> = ({ tracks, isLoading, error }) => {
             <h1>What I've been listening to:</h1>
             {tracks.length > 0 ? (
                 <ul>
-                    {/* Bonus Tip: Use a more stable key than index */}
                     {tracks.map((track) => (
                         <li key={track.timestamp} className="flex justify-start text-sm items-center">
                             <span
@@ -29,7 +27,7 @@ const RecentlyPlayed: React.FC<Props> = ({ tracks, isLoading, error }) => {
                                 {track.artist} - {track.name}
                             </span>
                             <span className="flex-shrink-0 ml-2 whitespace-nowrap">
-                                {`Played ${formatDistanceToNow(new Date(track.timestamp))} ago`}
+                                {`// played ${formatDistanceToNow(new Date(track.timestamp))} ago`}
                             </span>
                         </li>
                     ))}

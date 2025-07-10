@@ -25,6 +25,10 @@ const AboutMe: React.FC = () => {
                         <span className="text-teal-400 mr-3">✓</span>
                         Somehow link this to my Server?
                     </li>
+                    <li className="flex items-center">
+                        <span className="text-teal-400 mr-3">✓</span>
+                        Clean up the front page - add proper structure
+                    </li>
                 </ul>
             </div>
 

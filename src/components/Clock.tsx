@@ -12,7 +12,7 @@ const Clock: React.FC = () => {
             return "Waking up...";
         } else if (hour >= 12 && hour < 18) {
             return "Working, most likely.";
-        } else if (hour >= 18 && hour < 22) {
+        } else if (hour >= 18 && hour < 23) {
             return "Winding down.";
         } else {
             return "Asleep - most likely";

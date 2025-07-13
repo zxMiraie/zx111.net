@@ -20,14 +20,13 @@ const RecentlyPlayed: React.FC<Props> = ({ tracks, isLoading, error }) => {
                     {tracks.map((track) => (
                         <li key={track.timestamp} className="flex justify-start text-sm items-center">
                             <span
-                                className="truncate"
-                                style={{ maxWidth: '50%' }}
+                                className=""
                                 title={`${track.artist} - ${track.name}`}
                             >
                                 {track.artist} - {track.name}
                             </span>
                             <span className="flex-shrink-0 ml-2 whitespace-nowrap">
-                                {`// played ${formatDistanceToNow(new Date(track.timestamp))} ago`}
+                                {`// ${formatDistanceToNow(new Date(track.timestamp))} ago`}
                             </span>
                         </li>
                     ))}

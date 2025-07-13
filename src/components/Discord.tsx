@@ -57,7 +57,7 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
         return <div>Loading...</div>;
     }
 
-    const { discord_user, discord_status, activities } = data;
+    const {discord_user, discord_status, activities} = data;
     const avatarUrl = `https://api.lanyard.rest/${discord_user.id}.png`;
 
     // Define border color based on Discord status
@@ -78,33 +78,33 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
         default:
             borderColorClass = '';
     }
-    const nonSpotifyActivities = activities.filter(activity => activity.name !== 'Spotify');
-    const customStatusActivity = nonSpotifyActivities.find(activity => activity.name === 'Custom Status');
-    const filteredActivities = activities.filter(activity => activity.name !== 'Spotify' && activity.name !== 'Custom Status');
+
+    //deprecated - I used it to show activity - we only need Custom activity
+    //const nonSpotifyActivities = activities.filter(activity => activity.name !== 'Spotify')
+    //const customStatusActivity = nonSpotifyActivities.find(activity => activity.name === 'Custom Status');
+    //const filteredActivities = activities.filter(activity => activity.name !== 'Spotify' && activity.name !== 'Custom Status');
+
+    const customStatusActivity = activities.find(activity => activity.name === 'Custom Status');
 
     return (
-        <div className="p-3 text-white rounded-lg shadow-md text-right">
-            <div className="flex items-center">
-                <div className="ml-4 p-3">
-                    <h2 className="text-xl">{discord_user.display_name || discord_user.username}</h2>
-                    <p className="text-sm">{discord_status}</p>
-                    <p>{customStatusActivity ? customStatusActivity.state : ' '}</p>
-                    <div className="mt-4">
-                        {filteredActivities.map((activity, index) => (
-                            <div key={index} className="mt-2">
-                                <p>{activity.name}</p>
-                                <p>{activity.details}</p>
-                                <p>{activity.state}</p>
-                            </div>
-                        ))}
-                    </div>
-                    <footer className="flex items-center justify-center text-sm">
-                        <p className="animate-pulse bg-gradient-to-r from-blue-400 via-teal-500 to-green-500 bg-clip-text text-transparent font-bold drop-shadow-[0_0_10px_rgba(56,189,248,0.8)] hover:drop-shadow-[0_0_20px_rgba(56,189,248,1)] transition-all duration-300 cursor-pointer">
-                            You can click this!
-                        </p>
-                    </footer>
-                </div>
-                <img src={avatarUrl} alt="User Avatar" className={`w-36 h-36 rounded-full border-4 ${borderColorClass}`}/>
+        <div className="flex items-center space-x-4 p-4 text-xs">
+            <div className="relative">
+                <img
+                    src={avatarUrl}
+                    alt="User Avatar"
+                    className={`w-20 h-20 rounded-full border-2 ${borderColorClass}`}
+                />
+            </div>
+            <div className="flex flex-col">
+                <h1 className="text-xl">
+                    {discord_user.display_name}
+                </h1>
+                <p className="capitalize">
+                    {discord_status}
+                </p>
+                <h2>
+                    <p>{customStatusActivity.state}</p>
+                </h2>
             </div>
         </div>
     );

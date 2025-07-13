@@ -87,7 +87,7 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
     const customStatusActivity = activities.find(activity => activity.name === 'Custom Status');
 
     return (
-        <div className="flex items-center space-x-4 p-4 text-xs">
+        <div className="m-8 flex items-center space-x-4 p-4">
             <div className="relative">
                 <img
                     src={avatarUrl}
@@ -103,7 +103,9 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
                     {discord_status}
                 </p>
                 <h2>
-                    <p>{customStatusActivity.state}</p>
+                    {customStatusActivity && (
+                        <p>{customStatusActivity.state}</p>
+                    )}
                 </h2>
             </div>
         </div>

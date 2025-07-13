@@ -83,7 +83,7 @@ const GlitchText: React.FC<GlitchTextProps> = ({
       }}
     >
       {displayText}
-      <style jsx>{`
+      <style>{`
         @keyframes glitch {
           0% {
             text-shadow: 0.05em 0 0 rgba(255,0,0,.75),

@@ -14,19 +14,16 @@ const RecentlyPlayed: React.FC<Props> = ({ tracks, isLoading, error }) => {
 
     return (
         <div>
-            <h1>What I've been listening to:</h1>
+            <h1 className="border-b pb-1 mb-1">What I've been listening to:</h1>
             {tracks.length > 0 ? (
                 <ul>
                     {tracks.map((track) => (
-                        <li key={track.timestamp} className="flex justify-start text-sm items-center">
-                            <span
-                                className=""
-                                title={`${track.artist} - ${track.name}`}
-                            >
+                        <li key={track.timestamp} className="flex justify-between text-sm items-center w-full">
+                            <span title={`${track.artist} - ${track.name}`} className="truncate max-w-[90%]">
                                 {track.artist} - {track.name}
                             </span>
-                            <span className="flex-shrink-0 ml-2 whitespace-nowrap">
-                                {`// ${formatDistanceToNow(new Date(track.timestamp))} ago`}
+                            <span className="flex-shrink-0 text-gray-500 text-xs">
+                                {formatDistanceToNow(new Date(track.timestamp))} ago
                             </span>
                         </li>
                     ))}

@@ -10,13 +10,12 @@ import {HookFM} from "../hooks/hook";
 import "../App.css"
 
 const LandingPage: React.FC = () => {
-    const { nowPlaying, recentlyPlayed, totalScrobbles, isLoading, error } = HookFM('zx111', 20);
+    const { nowPlaying, recentlyPlayed, totalScrobbles, isLoading, error } = HookFM('zx111', 19);
 
     return (
         <div className="container mx-auto p-6 max-w-10xl min-h-screen flex flex-col fade-in">
             <div className="flex-grow">
                 <Navbar />
-
                 <div className="mb-8 flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-4 md:mb-0">
                         <Discord userId={"360803113864658944"}/>

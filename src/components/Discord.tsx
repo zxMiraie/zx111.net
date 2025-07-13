@@ -87,8 +87,8 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
     const customStatusActivity = activities.find(activity => activity.name === 'Custom Status');
 
     return (
-        <div className="m-8 flex items-center space-x-4 p-4">
-            <div className="relative">
+        <div className="m-2 flex items-center space-x-4 p-4">
+            <div className="">
                 <img
                     src={avatarUrl}
                     alt="User Avatar"

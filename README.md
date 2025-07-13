@@ -16,4 +16,3 @@
 
 ## Features 
  - It's a portfolio page. It shows my music. That's it.
- - TODO

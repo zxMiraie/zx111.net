@@ -70,14 +70,13 @@ export function HookFM(user: string, limit: number = 10){
             try {
                 const response = await fetch(`/api/lastfm?method=user.getinfo&user=${user}`);
                 const data = await response.json();
-
                 setTotalScrobbles(parseInt(data.user.playcount, 10));
             } catch (error) {
                 console.error('Error fetching total scrobbles:', error);
             }
         };
         fetchTotalScrobbles();
-        const interval = setInterval(fetchTotalScrobbles, 60000);
+        const interval = setInterval(fetchTotalScrobbles, 120000);
         return () => clearInterval(interval);
     }, [user]);
 

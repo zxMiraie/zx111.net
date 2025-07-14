@@ -12,9 +12,9 @@ const Navbar: React.FC = () => {
   const getGlitchWords = () => {
     switch(location.pathname) {
       case '/about':
-        return ['About Me', 'Who am I?', 'zx111'];
+        return ['about Me', 'who am I?', 'zx111'];
       case '/music':
-        return ['Music', 'Tunes', 'zx111'];
+        return ['music', 'tunes', 'zx111'];
       default:
         return ['zx111', 'developer', 'music'];
     }

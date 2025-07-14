@@ -27,7 +27,7 @@ const LandingPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:divide-x">
+                <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-5 md:divide-x">
                     <div className="md:pr-4">
                         <NowPlaying track={nowPlaying} scrobbles={totalScrobbles}/>
                     </div>

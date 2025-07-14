@@ -87,19 +87,19 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
     const customStatusActivity = activities.find(activity => activity.name === 'Custom Status');
 
     return (
-        <div className="m-2 flex items-center space-x-4 p-4">
-            <div className="">
+        <div className="m-2 flex items-center space-x-2">
+            <div className="pr-2">
                 <img
                     src={avatarUrl}
                     alt="User Avatar"
-                    className={`w-20 h-20 rounded-full border-2 ${borderColorClass}`}
+                    className={`h-24 rounded-full border-4 ${borderColorClass}`}
                 />
             </div>
             <div className="flex flex-col">
                 <h1 className="text-xl">
                     {discord_user.display_name}
                 </h1>
-                <p className="capitalize">
+                <p className="capitalize text-xs">
                     {discord_status}
                 </p>
                 <h2>

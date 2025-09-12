@@ -42,7 +42,7 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
     useEffect(() => {
        const fetchData = async () => {
            try{
-               const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+               const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}?t=${Date.now()}`);
                const json = await response.json();
                setData(json.data);
               } catch (error) {
@@ -58,10 +58,10 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
     }
 
     const {discord_user, discord_status, activities} = data;
-    const avatarUrl = `https://api.lanyard.rest/${discord_user.id}.png`;
+    const avatarUrl = `https://api.lanyard.rest/${discord_user.id}.png?t=${Date.now()}`;
 
     // Define border color based on Discord status
-    let borderColorClass = null;
+    let borderColorClass
     switch (discord_status) {
         case 'online':
             borderColorClass = 'border-green-500';

@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
-import {faPython} from "@fortawesome/free-brands-svg-icons";
+import {faMicrosoft, faPython} from "@fortawesome/free-brands-svg-icons";
 
 const AboutMe: React.FC = () => {
     return (
@@ -24,7 +24,10 @@ const AboutMe: React.FC = () => {
                 </div>
 
                 <div>
-                    <Card icon={faPython} color={"text-yellow-400"} name={"Python"} description={"test"} />
+                    <Card icon={faPython} color={"text-yellow-400"} name={"Python"} description={"WIP"} />
+                </div>
+                <div>
+                    <Card icon={faMicrosoft} color={"text-green-400"} name={"C#"} description={"WIP"} />
                 </div>
 
 

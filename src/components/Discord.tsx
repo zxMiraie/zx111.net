@@ -61,7 +61,7 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
     const avatarUrl = `https://api.lanyard.rest/${discord_user.id}.png`;
 
     // Define border color based on Discord status
-    let borderColorClass = null;
+    let borderColorClass
     switch (discord_status) {
         case 'online':
             borderColorClass = 'border-green-500';

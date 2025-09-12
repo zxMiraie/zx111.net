@@ -42,7 +42,7 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
     useEffect(() => {
        const fetchData = async () => {
            try{
-               const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+               const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}?=${Date.now()}`);
                const json = await response.json();
                setData(json.data);
               } catch (error) {

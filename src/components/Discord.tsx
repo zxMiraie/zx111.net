@@ -38,6 +38,7 @@ interface LanyardData {
 
 const Discord: React.FC<DiscordProps> = ({ userId }) => {
     const [data, setData] = useState<LanyardData | null>(null);
+    const [avatarUrl, setAvatarUrl] = useState<string>('');
 
     useEffect(() => {
        const fetchData = async () => {
@@ -45,6 +46,7 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
                const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}?t=${Date.now()}`);
                const json = await response.json();
                setData(json.data);
+               setAvatarUrl(`https://api.lanyard.rest/${userId}.png`);
               } catch (error) {
                 console.error('Error fetching data:', error);
            }
@@ -58,7 +60,7 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
     }
 
     const {discord_user, discord_status, activities} = data;
-    const avatarUrl = `https://api.lanyard.rest/${discord_user.id}.png?t=${Date.now()}`;
+
 
     // Define border color based on Discord status
     let borderColorClass

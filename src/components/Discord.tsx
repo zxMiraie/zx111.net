@@ -46,7 +46,7 @@ const Discord: React.FC<DiscordProps> = ({ userId }) => {
                const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}?t=${Date.now()}`);
                const json = await response.json();
                setData(json.data);
-               setAvatarUrl(`https://api.lanyard.rest/${userId}.png`);
+               setAvatarUrl(`https://api.lanyard.rest/${userId}.png?t=${Date.now()}`);
               } catch (error) {
                 console.error('Error fetching data:', error);
            }
